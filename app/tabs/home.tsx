@@ -7,12 +7,15 @@ import { useAppStore } from '@/store/app'
 import { EMERGENCY_STEPS } from '@/constants/guide-data'
 
 const QUICK_ACTIONS = [
-  { icon: '🛡️', label: 'Emergency\nGuide',  sub: 'Offline · 7 steps',         route: '/tabs/guide'  },
-  { icon: '⚖️', label: 'Legal\nRights AI',  sub: 'Ask anything',               route: '/tabs/legal'  },
-  { icon: '📋', label: 'FIR\nEscalator',    sub: 'Generate letters',            route: '/tabs/fir'    },
-  { icon: '🔒', label: 'Evidence\nVault',   sub: 'Coming soon',                 route: null           },
-  { icon: '🗺️', label: 'Safety\nMap',       sub: 'Coming soon',                 route: null           },
-  { icon: '💬', label: 'Safe\nSpace',        sub: 'Coming soon',                 route: null           },
+  { icon: '🛡️', label: 'Emergency\nGuide',  sub: 'Offline · 7 steps',      route: '/tabs/guide'     },
+  { icon: '⚖️', label: 'Legal\nRights AI',  sub: 'Ask anything',            route: '/tabs/legal'     },
+  { icon: '📋', label: 'FIR\nEscalator',    sub: 'Generate letters',        route: '/tabs/fir'       },
+  { icon: '🔒', label: 'Evidence\nVault',   sub: 'Encrypted storage',       route: '/tabs/vault'     },
+  { icon: '🗺️', label: 'Safety\nMap',       sub: 'Report unsafe spots',     route: '/tabs/map'       },
+  { icon: '💬', label: 'Safe\nSpace',        sub: 'Anonymous community',     route: '/tabs/community' },
+  { icon: '📋', label: 'Case\nTracker',      sub: 'eCourts + reminders',     route: '/tabs/cases'     },
+  { icon: '🩺', label: 'Health\nTracker',    sub: 'Cycle + PCOS',            route: '/tabs/health'    },
+  { icon: '💰', label: 'Credit\nBuilder',    sub: 'Coming soon',             route: null              },
 ]
 
 const HELPLINES = [

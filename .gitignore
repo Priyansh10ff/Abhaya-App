@@ -1,15 +1,28 @@
+# Environment — NEVER commit these
+.env
+.env.local
+.env.production
+
+# Dependencies
 node_modules/
+
+# Expo
 .expo/
 dist/
-npm-debug.*
+web-build/
+
+# Build
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
-.env
-.env.local
+
+# EAS
+.easignore
+
+# OS
 .DS_Store
+Thumbs.db
 *.log

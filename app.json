@@ -28,23 +28,40 @@
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO",
-        "android.permission.ACCESS_FINE_LOCATION"
-      ]
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE",
+        "android.permission.POST_NOTIFICATIONS"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY"
+        }
+      }
     },
     "plugins": [
       "expo-router",
       "expo-secure-store",
       [
-        "expo-font",
+        "expo-location",
         {
-          "fonts": [
-            "./assets/fonts/DMSans-Regular.ttf",
-            "./assets/fonts/DMSans-Medium.ttf",
-            "./assets/fonts/DMSans-SemiBold.ttf",
-            "./assets/fonts/Lora-Regular.ttf",
-            "./assets/fonts/Lora-SemiBold.ttf",
-            "./assets/fonts/Lora-Italic.ttf"
-          ]
+          "locationWhenInUsePermission": "Abhaya needs your location to show nearby safety reports.",
+          "locationAlwaysAndWhenInUsePermission": "Abhaya needs your location for the safety map."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#0B6860",
+          "sounds": []
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Abhaya needs access to your photos to add evidence to your vault.",
+          "cameraPermission": "Abhaya needs camera access to photograph evidence."
         }
       ]
     ],
