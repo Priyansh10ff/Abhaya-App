@@ -8,6 +8,7 @@ import Animated, { FadeInDown, FadeIn } from 'react-native-reanimated'
 import * as Haptics from 'expo-haptics'
 import { Colors, FontSize, Spacing, Radius } from '@/constants/colors'
 import { submitPost, CATEGORIES, CRISIS_RESOURCES, type Category } from '@/lib/community'
+const API_KEY = Constants.expoConfig?.extra?.claudeApiKey ?? ''
 import { analyzeCrisisLevel, quickCrisisCheck }                    from '@/lib/crisis-detect'
 
 export default function NewPostScreen() {
@@ -31,9 +32,9 @@ export default function NewPostScreen() {
     // Quick local check first (no API call)
     const quickLevel = quickCrisisCheck(content)
 
-    // If potentially concerning, do full AI analysis
+    // If potentially concerning, do full AI analysis (only if API key set)
     let finalLevel = quickLevel
-    if (quickLevel >= 1) {
+    if (quickLevel >= 1 && API_KEY) {
       const analysis = await analyzeCrisisLevel(content)
       finalLevel     = analysis.level
     }

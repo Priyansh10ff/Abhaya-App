@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import {
   View, Text, StyleSheet, ScrollView, TextInput,
   TouchableOpacity, SafeAreaView, KeyboardAvoidingView,
-  Platform, ActivityIndicator,
+  Platform, ActivityIndicator, Alert, Linking,
 } from 'react-native'
 import Animated, { FadeInDown, FadeIn } from 'react-native-reanimated'
 import * as Haptics from 'expo-haptics'
@@ -51,6 +51,19 @@ export default function LegalTab() {
   async function send(text?: string) {
     const content = (text ?? input).trim()
     if (!content || isChatLoading) return
+
+    // No API key → show "under development" popup
+    if (!API_KEY) {
+      Alert.alert(
+        '⚙️ Coming soon',
+        'The Legal Rights AI is under development and will be available soon.\n\nFor urgent legal help:\n• NALSA free helpline: 15100\n• NCW helpline: 181',
+        [
+          { text: 'Call NALSA', onPress: () => Linking.openURL('tel:15100') },
+          { text: 'OK', style: 'cancel' },
+        ]
+      )
+      return
+    }
 
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
     setInput('')
@@ -121,7 +134,14 @@ export default function LegalTab() {
               <Text style={styles.welcomeBody}>
                 Ask anything about your legal rights under Indian law — DV Act, POSH, FIR process, free legal aid, protection orders, and more. Available in Hindi, Kannada, Tamil, Telugu, Bengali.
               </Text>
-              <View style={styles.disclaimer}>
+              {!API_KEY && (
+              <View style={[styles.disclaimer, { backgroundColor: 'rgba(245,158,11,0.1)', borderColor: 'rgba(245,158,11,0.3)' }]}>
+                <Text style={[styles.disclaimerText, { color: '#F59E0B' }]}>
+                  ⚙️ Legal AI is coming soon. For now, call NALSA free legal aid: 15100
+                </Text>
+              </View>
+            )}
+            <View style={styles.disclaimer}>
                 <Text style={styles.disclaimerText}>
                   ℹ️ This provides legal information, not legal advice. For complex cases, connect with a free DLSA lawyer.
                 </Text>

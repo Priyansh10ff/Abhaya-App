@@ -32,7 +32,7 @@ export async function analyzeCrisisLevel(text: string): Promise<CrisisAnalysis> 
   // Default safe response — used if API fails
   const safe: CrisisAnalysis = { level: 0, reason: 'No crisis signals detected', show_resources: false }
 
-  if (!API_KEY || text.trim().length < 10) return safe
+  if (!API_KEY || text.trim().length < 10) return safe  // No key = skip API, use keyword check only
 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
